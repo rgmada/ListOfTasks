@@ -4,7 +4,8 @@ import { auth } from "@clerk/nextjs/server";
 
 
 export async function DELETE(
-  req: NextRequest,  
+  // @typescript-eslint/no-unused-vars
+  _req: NextRequest,  
   { params }: { params: { id: string } }  
 ) {
   try {

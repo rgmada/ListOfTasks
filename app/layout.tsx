@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Nunito } from "next/font/google";
+import { Nunito } from "next/font/google";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import GlobalStyleProvider from "./Providers/GlobalStyleProvider";
 import ContextProvider from "./Providers/ContextProvider";
