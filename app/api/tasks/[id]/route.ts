@@ -4,17 +4,19 @@ import { auth } from "@clerk/nextjs/server";
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { [key: string]: string | string[] } } // Updated type
+  { params }: { params: { id: string } } // Fixed type
 ) {
   try {
     const { userId } = await auth();
 
-    const id = params.id as string; // Safely cast to string
+    // Extract `id` from params
+    const { id } = params;
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
     }
 
+    // Delete the task from the database
     const task = await prisma.task.delete({
       where: {
         id,
