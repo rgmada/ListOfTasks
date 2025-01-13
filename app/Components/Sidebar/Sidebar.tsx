@@ -84,9 +84,15 @@ function Sidebar() {
     );
 }
 
+interface SidebarStyledProps {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    theme: any;
+    collapsed: boolean;
+}
+
 const SidebarStyled = styled.nav.withConfig({
     shouldForwardProp: (prop) => prop !== "collapsed",
-  })`
+  })<SidebarStyledProps>`
     position: relative;
     width: ${(props) => props.theme.sidebarWidth};
     background-color: ${(props) => props.theme.colorBg2};
