@@ -23,6 +23,7 @@ const [category, setCategory] = useState<Category | undefined>(Category.WORK);
 
 const {theme, allTasks, closeModal} = useGlobalState();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handleChange = (name: string) => (e:any) => {
     switch (name) {
         case "title":
@@ -48,6 +49,7 @@ const handleChange = (name: string) => (e:any) => {
     }
 };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 

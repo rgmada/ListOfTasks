@@ -24,6 +24,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const {userId} = auth ();
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useGlobalState } from "@/app/Context/GlobalProvider";
 import React, { useState } from "react";
@@ -14,6 +15,7 @@ interface Props {
 }
 
 function Tasks({ title, tasks }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { theme, isLoading, openModal, modal, updateTask } = useGlobalState();
   const [sortOption, setSortOption] = useState("date");
 
