@@ -25,7 +25,7 @@ export default async function RootLayout({
 }) {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {userId} = auth ();
+  const { userId } = await auth();
 
   return (
     <ClerkProvider>
