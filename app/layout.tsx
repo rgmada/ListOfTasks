@@ -4,7 +4,7 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 import GlobalStyleProvider from "./Providers/GlobalStyleProvider";
 import ContextProvider from "./Providers/ContextProvider";
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
-import { auth } from '@clerk/nextjs/server';
+//import { auth } from '@clerk/nextjs/server';
 import './globals.css';
 import NextTopLoader from "nextjs-toploader";
 
@@ -24,11 +24,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { userId } = await auth();
+  /// eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const { userId } = await auth();
 
   return (
-    <ClerkProvider>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
       <html lang="en">
         <head> 
               {/* <SignedOut>
@@ -54,7 +54,9 @@ export default async function RootLayout({
           <ContextProvider>
             <GlobalStyleProvider>
                 {/* {userId && <Sidebar/>} */}
-                <Sidebar/>
+                <SignedIn>
+                  <Sidebar />
+                </SignedIn>
               <div className="w-full">{children}</div>
             </GlobalStyleProvider>
           </ContextProvider>
