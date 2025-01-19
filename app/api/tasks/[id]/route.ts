@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '../../../../app/Utils/connect';
 import { auth } from '@clerk/nextjs/server';
 
-export const DELETE = async (request: NextRequest, { params }: { params: { id: string } }) => {
+
+export const DELETE = async (request: NextRequest, { params }: { params: Promise<{ id: string }> }) => {
   
-  const { userId } = await auth() ?? {}; 
+  const { userId } = await auth() || {}; 
 
   
   if (!userId) {
@@ -15,7 +16,7 @@ export const DELETE = async (request: NextRequest, { params }: { params: { id: s
       
       const taskToDelete = await prisma.task.delete({
         where: {
-          id: params.id,
+          id: (await params).id,
         },
       });
 

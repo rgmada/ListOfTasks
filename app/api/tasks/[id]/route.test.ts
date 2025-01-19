@@ -41,7 +41,7 @@ describe('DELETE /api/tasks/[id]', () => {
     (prisma.task.delete as jest.MockedFunction<typeof prisma.task.delete>).mockResolvedValue(mockDeletedTask);
 
     
-    const mockParams = { params: { id: 'task-123' } };
+    const mockParams = { params: Promise.resolve({ id: 'task-123' }) };
     const mockRequest = {
       method: 'DELETE',
       url: 'http://localhost:3000/api/tasks/task-123',
@@ -78,7 +78,7 @@ describe('DELETE /api/tasks/[id]', () => {
     (auth as unknown as jest.Mock).mockReturnValue(null);
 
     
-    const mockParams = { params: { id: 'task-123' } };
+    const mockParams = { params: Promise.resolve({ id: 'task-123' }) };
     const mockRequest = {
       method: 'DELETE',
       url: 'http://localhost:3000/api/tasks/task-123',
@@ -102,7 +102,7 @@ describe('DELETE /api/tasks/[id]', () => {
     (prisma.task.delete as jest.MockedFunction<typeof prisma.task.delete>).mockRejectedValue(new Error('Database error'));
 
     
-    const mockParams = { params: { id: 'task-123' } };
+    const mockParams = { params: Promise.resolve({ id: 'task-123' }) };
     const mockRequest = {
       method: 'DELETE',
       url: 'http://localhost:3000/api/tasks/task-123',
